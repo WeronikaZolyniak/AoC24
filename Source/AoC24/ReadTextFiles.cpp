@@ -23,7 +23,7 @@ FString UReadTextFiles::ReadStringFromFile(FString FilePath)
 TArray<FString> UReadTextFiles::ParseStringIntoArray(FString String)
 {
 	TArray<FString> Array;
-	String.ParseIntoArrayWS(Array, (const TCHAR*)nullptr, false);
+	String.ParseIntoArrayWS(Array, (const TCHAR*)nullptr, true);
 
 	return Array;
 }

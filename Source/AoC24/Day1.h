@@ -18,5 +18,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	static int ReturnAnswer(TArray<FString> Strings);
+
+	bool SortCondition(int value1, int value2);
 	
 };
