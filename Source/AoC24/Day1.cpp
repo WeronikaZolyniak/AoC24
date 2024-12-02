@@ -4,11 +4,6 @@
 #include "Day1.h"
 #include "Containers/Map.h"
 
-bool UDay1::SortCondition(int value1, int value2)
-{
-	return value1 < value2;
-}
-
 int UDay1::ReturnAnswer(TArray<FString> Strings)
 {
 	// first part

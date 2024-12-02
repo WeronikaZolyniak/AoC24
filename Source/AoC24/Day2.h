@@ -4,19 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Day1.generated.h"
+#include "Day2.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AOC24_API UDay1 : public UBlueprintFunctionLibrary
+class AOC24_API UDay2 : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
-public:
-
+	
 	UFUNCTION(BlueprintCallable)
 	static int ReturnAnswer(TArray<FString> Strings);
-	
+
+	static bool IsValid(TArray<FString> Array);
+
+	static int IsIncreasing(int no1, int no2);
 };

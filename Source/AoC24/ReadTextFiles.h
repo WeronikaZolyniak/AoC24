@@ -20,4 +20,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	static TArray<FString> ParseStringIntoArray(FString String);
+
+	UFUNCTION(BlueprintCallable)
+	static TArray<FString> ParseStringIntoArrayofLines(FString String);
 };

@@ -27,3 +27,13 @@ TArray<FString> UReadTextFiles::ParseStringIntoArray(FString String)
 
 	return Array;
 }
+
+TArray<FString> UReadTextFiles::ParseStringIntoArrayofLines(FString String)
+{
+	TArray<FString> Array;
+	String.ParseIntoArrayLines(Array);
+
+	return Array;
+}
+
+
