@@ -45,6 +45,9 @@ int UDay2::ReturnAnswer(TArray<FString> Strings)
 		}
 	}
 	return sum;
+
+	TMap<int, int> map;
+	map.Add(1);
 }
 
 bool UDay2::IsValid(TArray<FString> Array)
