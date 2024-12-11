@@ -65,6 +65,7 @@ int UDay5::ReturnAnswer(FString String)
 	}
 	return sum;*/
 
+	//part 2
 	TArray<TArray<FString>> IncorrectQueues;
 	for (TArray<FString> Queue : PrintQueues)
 	{
@@ -87,6 +88,7 @@ bool UDay5::QueueIsCorrect(TMap<int, TArray<int>> OrderMap, TArray<FString> Prin
 	for (int i = 1; i < PrintQueue.Num(); i++)
 	{
 		int currentNum = FCString::Atoi(*PrintQueue[i]);
+		if (OrderMap.Find(currentNum) == nullptr) continue;
 		TArray<int> NumbersAfter = *OrderMap.Find(currentNum);
 		for (int j = 0; j < i; j++)
 		{
@@ -102,9 +104,51 @@ bool UDay5::QueueIsCorrect(TMap<int, TArray<int>> OrderMap, TArray<FString> Prin
 
 int UDay5::ReturnCorrectMiddle(TArray<FString> IncorrectQueue, TMap<int, TArray<int>> OrderMap)
 {
-	
+	TArray<FString> CorrectQueue;
+	TMap<FString, int> Priority;
+
+	for (FString QueueEl : IncorrectQueue)
+	{
+		int num = FCString::Atoi(*QueueEl);
+		if (OrderMap.Find(num) != nullptr)
+		{
+			TArray<int> NumsArray = *OrderMap.Find(num);
+			for (int el : NumsArray)
+			{
+				for (FString s_el : IncorrectQueue)
+				{
+					if (FCString::Atoi(*s_el) == el)
+					{
+						if (Priority.Find(QueueEl) != nullptr)
+						{
+							Priority[QueueEl]++;
+						}
+						else
+						{
+							Priority.Add(QueueEl, 1);
+						}
+					}
+				}
+			}
+		}
+		
+
+	}
+
+	Priority.ValueSort([](const int& A, const int& B) {
+		return A > B;
+		});
+
+	for (auto p : Priority)
+	{
+		CorrectQueue.Add(p.Key);
+	}
+
+
+	int middleindex = ceil(CorrectQueue.Num() / 2);
+	int middlelement = FCString::Atoi(*CorrectQueue[middleindex]);
 
 
 
-	return 0;
+	return middlelement;
 }
