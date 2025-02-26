@@ -27,9 +27,10 @@ int UDay9::ReturnAnswer(FString String)
             }
         }
     }
+    DiskMap.Add(-1);
 
     //part 1
-    for (int i = 0; i < DiskMap.Num(); i++)
+    /*for (int i = 0; i < DiskMap.Num(); i++)
     {
         if (DiskMap[i] == -1)
         {
@@ -50,7 +51,75 @@ int UDay9::ReturnAnswer(FString String)
     {
         if (DiskMap[i] == -1) continue;
         sum += i * DiskMap[i];
+    }*/
+
+    //part 2
+    int blankspacesize = 0;
+    bool blankspacebeingcounted = false;
+
+    int filespacesize = 0;
+    bool filebeingcounted = false;
+
+    for (int i = 0; i < DiskMap.Num(); i++)
+    {
+        if (DiskMap[i] == -1)
+        {
+            if (blankspacebeingcounted)
+            {
+                blankspacesize++;
+                continue;
+            }
+            else
+            {
+                blankspacesize = 1;
+                blankspacebeingcounted = true;
+                continue;
+            }
+        }
+        else
+        {
+            if (blankspacebeingcounted)
+            {
+                blankspacebeingcounted = false;
+                int blankspaceleft = blankspacesize;
+
+                for (int j = DiskMap.Num() - 2; j > i; j--)
+                {
+                    if (blankspaceleft == 0) break;
+
+                    if (DiskMap[j] != -1)
+                    {
+                        if (filebeingcounted && DiskMap[j - 1] == DiskMap[j])
+                        {
+
+                        }
+                        else if (filebeingcounted && DiskMap[j - 1] == DiskMap[j] )
+                        {
+                            //end counting of one file, start another
+                            filebeingcounted = false;
+                            if
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+        }
+    }
+
+    uint64 sum = 0;
+    for (int i = 0; i < DiskMap.Num(); i++)
+    {
+        if (DiskMap[i] == -1) continue;
+        sum += i * DiskMap[i];
     }
 
     return 0;
+}
+
+bool UDay9::CheckIfSpaceIsBigEnough(int blankspacesize, int filesize)
+{
+    return blankspacesize >= filesize;
 }

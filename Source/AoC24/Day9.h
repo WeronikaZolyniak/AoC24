@@ -16,4 +16,6 @@ class AOC24_API UDay9 : public UBlueprintFunctionLibrary
 	
 	UFUNCTION(BlueprintCallable)
 	static int ReturnAnswer(FString String);
+
+	static bool CheckIfSpaceIsBigEnough(int blankspacesize, int filesize);
 };
